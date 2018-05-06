@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+	<title>Claudiu Tiganetea</title>
+	<meta charset="utf-8" />
+	<link rel='stylesheet' href="css.css" type="text/css" />
+	<meta name="viewport" content = "width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+<h1 style="position:relative;margin:0;top:5vh;font-family: Arial;">
+<center>
+	<strong>
+	GEORGEL SIMULATOR
+</strong>
+</center>
+</h1>
+
+<div class="flexbox" style="margin-top:0;">
+	<div class="element">
+		<p><strong> Asta ziceam. </strong></p>
+	</div>
+	<div class="element">
+		<p><strong> Poftim? </strong></p>
+	</div>
+	<div class="element">
+		<p><strong> Esti in regula? </strong></p>
+	</div>
+	<div class="element">
+		<p><strong> Buna ziua. </strong></p>
+	</div>
+	<div class="element">
+		<p><strong> M-am simtit bine. </strong></p>
+	</div>
+	<div class="element">
+		<p><strong> Cum o duci? </strong></p>
+	</div>
+	<div class="element">
+		<p><strong> Vii putin te rog? </strong></p>
+	</div>
+	<div class="element">
+		<p><strong> Lasa-ma in pace. </strong></p>
+	</div>
+	<div class="element">
+		<p><strong> O zi buna. </strong></p>
+	</div>
+	<div class="element">
+		<p><strong> IT'S A SQUIRTER </strong></p>
+	</div>
+	<div class="element">
+		<p><strong> Suna-ti parintii. </strong></p>
+	</div>
+	<div class="element">
+		<p><strong> Nesimtitule. </strong></p>
+	</div>
+</div>
+
+<script>
+
+var colors = ["#ff3300","#cc0066","#669900","#3366ff","#339933","#9900cc"];
+var sounds = ["aia","ci","crecuit","hei","damblaua","dragoane","hai","marita","numa","squirter","sun-o","vaci"];
+for(var i=0;i<=sounds.length-1;i++) {
+	sounds[i] = sounds[i] + ".mp4";
+}
+var elements = document.getElementsByClassName("element");
+
+function randColor() {
+	for(var i=0;i<=elements.length-1;i++) {
+		var colorID = Math.floor(Math.random() * colors.length);
+		elements[i].style.backgroundColor = colors[colorID];
+	}
+}
+
+randColor();
+
+function addClickEvents() {
+	var index = 0;
+	Array.from(elements).forEach(function(elem) {
+		var color = window.getComputedStyle(elem).backgroundColor;
+		var sound = sounds[index];
+		index++;
+		var newSound = new Audio();
+		newSound.src = sound;
+		elem.addEventListener("mousedown",function() {
+			elem.style.backgroundColor = "black";
+			newSound.play();
+			setTimeout(function() {
+				elem.style.backgroundColor = color;},200);
+		})
+	})
+}
+
+document.addEventListener("load",addClickEvents());
+
+</script>
+
+</body>
+
+</html>
